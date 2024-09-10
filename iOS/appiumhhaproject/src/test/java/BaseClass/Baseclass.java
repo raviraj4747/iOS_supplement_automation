@@ -37,20 +37,16 @@ public class Baseclass {
 
 			 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
 		//     capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "17.6.1");
-		 //    capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
+		//     capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
 		     capabilities.setCapability("automationName", "XCUITest");
-		//     capabilities.setCapability(MobileCapabilityType.UDID,"00008030-001255311498C02E");
-		//     capabilities.setCapability("xcodeOrgId", "S4T6PVN6LR");
-	 	//	 capabilities.setCapability("xcodeSigningId", "iPhone Developer");
+	//	     capabilities.setCapability(MobileCapabilityType.UDID,"00008030-001255311498C02E");
+//		     capabilities.setCapability("xcodeOrgId", "S4T6PVN6LR");
+//	 		 capabilities.setCapability("xcodeSigningId", "iPhone Developer");
 			// running on AWS
 			 capabilities.setCapability("autoAcceptAlerts", "true");
 			 capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
-			 capabilities.setCapability(MobileCapabilityType.APP, "com.asahigroup.holdings.drinkdiarypro");
-	//		 capabilities.setCapability(MobileCapabilityType.APP, "com.dearNatura.supplementDxApp");			 
-	//		 capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,
-//					"com.dearNatura.supplementDxApp");
-//			
-    		URL url = new URL("http://127.0.0.1:4723/wd/hub");
+			 capabilities.setCapability(MobileCapabilityType.APP, "com.dearNatura.supplementDxApp");		
+    	   	URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
 			driver = new IOSDriver<>(url, capabilities);
 			driver.setSetting("appium:autoAcceptAlerts", true);

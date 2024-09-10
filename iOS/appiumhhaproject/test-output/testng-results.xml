@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="14" passed="14" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="1" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-09T18:20:20 JST" name="Default suite" finished-at="2024-09-09T18:26:35 JST" duration-ms="374981">
+  <suite started-at="2024-09-10T18:07:29 JST" name="Default suite" finished-at="2024-09-10T18:08:22 JST" duration-ms="53206">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-09-09T18:20:20 JST" name="Default test" finished-at="2024-09-09T18:26:35 JST" duration-ms="374981">
+    <test started-at="2024-09-10T18:07:29 JST" name="Default test" finished-at="2024-09-10T18:08:22 JST" duration-ms="53206">
       <class name="Runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:20:20 JST" name="setUpClass" finished-at="2024-09-09T18:20:21 JST" duration-ms="745" status="PASS">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-10T18:07:29 JST" name="setUpClass" finished-at="2024-09-10T18:07:30 JST" duration-ms="713" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:20:21 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:20:29 JST" duration-ms="7538" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-10T18:07:30 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-10T18:07:39 JST" duration-ms="9099" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -30,11 +30,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:20:29 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:20:51 JST" duration-ms="22417" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-10T18:07:39 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-10T18:08:18 JST" duration-ms="39560" status="SKIP">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verify all tabs open without any crashing i.e Home, Drink Logger, Drink Stats, More"]]>
+                <![CDATA["Verify app should allow user to navigate Start registeration flow"]]>
               </value>
             </param>
             <param index="1">
@@ -43,202 +43,66 @@
               </value>
             </param>
           </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step "Verify Login button should appear" is undefined. You can implement it using the snippet(s) below:
+
+@Given("Verify Login button should appear")
+public void verify_Login_button_should_appear() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step "Verify Login button should appear" is undefined. You can implement it using the snippet(s) below:
+
+@Given("Verify Login button should appear")
+public void verify_Login_button_should_appear() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at io.cucumber.testng.TestCaseResultObserver.lambda$assertTestCasePassed$2(TestCaseResultObserver.java:26)
+at io.cucumber.core.runtime.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:110)
+at io.cucumber.testng.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:21)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:125)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:29)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:962)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:806)
+at org.testng.TestRunner.run(TestRunner.java:601)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:433)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:427)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:387)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:20:51 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:21:33 JST" duration-ms="41788" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["verify User is able to Add/delete drink type as Beer without specifying Drink Details option"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:21:33 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:21:44 JST" duration-ms="10840" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verify Drinking stats arrow redirect user to drinking stats screen"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:21:44 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:22:12 JST" duration-ms="28427" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["verify the value of drinking days this week,Total drinks consumed this week and drink free days this week stats"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:22:12 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:22:50 JST" duration-ms="37534" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verify user is able to add a drink with Specify Drink Details screen with past date"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:22:50 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:23:17 JST" duration-ms="27329" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["verify User is able to Add drink type as Cocktail without specifying Drink Details option"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:23:17 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:23:44 JST" duration-ms="27320" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["verify User is able to Add drink type as Liquor without specifying Drink Details option"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:23:44 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:24:12 JST" duration-ms="27169" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["verify User is able to Add drink type as wine without specifying Drink Details option"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:24:12 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:24:32 JST" duration-ms="20590" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Tap to Take a photo button and verify camera should open"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:24:32 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:24:53 JST" duration-ms="20691" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Tap to Take a photo button and verify camera should open"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:24:53 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:25:23 JST" duration-ms="30081" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verify user is able to add a drink with Specify Drink Details screen"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:25:23 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:25:59 JST" duration-ms="36509" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verify user is able to add a drink as type Cocktail"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:25:59 JST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-09T18:26:31 JST" duration-ms="31123" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verify user is able to add a drink as type wine"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["RC4 Test Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-09T18:26:31 JST" name="tearDownClass" finished-at="2024-09-09T18:26:35 JST" duration-ms="4616" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Runner.TestRunner@359df09a]" started-at="2024-09-10T18:08:18 JST" name="tearDownClass" finished-at="2024-09-10T18:08:22 JST" duration-ms="3735" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
