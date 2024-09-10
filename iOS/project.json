@@ -1,0 +1,9 @@
+{
+  "name": "HHAeXchange UMA",
+  "device_pool_name": "iOS_HHA",
+  "recipients": "varudhra@hhaexchange.com, vchandrappa@hhaexchange.com",
+  "run": {
+    "name": "RC4_iOS",
+    "description": "Running test on RC4 features End to End on 1 iphone." 
+  }
+}

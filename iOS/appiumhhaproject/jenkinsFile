@@ -1,0 +1,218 @@
+import hudson.tasks.test.AbstractTestResultAction
+import hudson.model.Actionable
+import hudson.tasks.junit.CaseResult
+import hudson.util.DescribableList
+import hudson.slaves.EnvironmentVariablesNodeProperty
+import jenkins.model.Jenkins
+
+def now = new Date()
+def TIME_STAMP = now.format("yyMMdd.HHmmssSSS", TimeZone.getTimeZone('UTC'))
+def test_stage = '1'
+def WK = ""
+def runArn = ""
+def buildFailed = false
+
+properties([
+    parameters([
+        string(name: 'node', defaultValue: 'build', description: 'Jenkins Node Name')
+    ]),
+    buildDiscarder(logRotator(daysToKeepStr: '100', numToKeepStr: '100'))
+])
+
+node(node) {
+    // Clean up Build machine Workspace
+    stage('init') {   
+        // Clean up WORKSPACE
+        step([$class: 'WsCleanup'])
+    }
+
+    // Get Source Code
+    stage('Checkout') {
+        println "Current branch ${env.BRANCH_NAME}"
+        println "Change branch ${env.CHANGE_BRANCH}"
+        println "Target branch ${env.CHANGE_TARGET}"
+        def branch = env.BRANCH_NAME
+
+        if (env.CHANGE_BRANCH) {
+            branch = env.CHANGE_BRANCH
+        }
+
+        checkout([
+            $class: 'GitSCM',
+            branches: [[name: branch]],
+            doGenerateSubmoduleConfigurations: false,
+            extensions: env.CHANGE_TARGET == null ? [] : [
+                [$class: 'PreBuildMerge', options: [fastForwardMode: 'NO_FF', mergeRemote: 'origin', mergeTarget: env.CHANGE_TARGET]]
+            ],
+            submoduleCfg: [],
+            userRemoteConfigs: [[name: 'origin', url: 'https://github.com/raviraj4747/iOS_supplement_automation.git', credentialsId: 'f418d151-1d20-44d9-8aec-8eeb8f306644']]
+        ])
+    }
+
+    try {
+        stage('prepare test') {
+            def branch = env.BRANCH_NAME
+            sh "pwd"
+
+            // Mount volume
+            def workspace = env.WORKSPACE
+            WK = "${branch}${TIME_STAMP}"
+            println "Current Work Folder"
+            println "${WK}"
+
+            dir("${pwd()}/iOS/appiumhhaproject") {
+                // Execute the Maven command
+                println "${WK}"
+                sh "mvn clean package -DskipTests=true"
+
+                def appFile = "${pwd()}/myapp.ipa"
+                def zipFile = "${pwd()}/target/zip-with-dependencies.zip"
+
+                // Define environment variables and credentials within withEnv block
+                withEnv([
+                    'AWS_DEFAULT_REGION=us-west-2',
+                    'DEVICE_FARM_PROJECT_ARN=arn:aws:devicefarm:us-west-2:891922163093:project:bbcb9f8a-c27e-4b0e-bd6c-fe23dd14ff9c',
+                    'DEVICE_FARM_DEVICE_POOL_ARN=arn:aws:devicefarm:us-west-2:891922163093:devicepool:bbcb9f8a-c27e-4b0e-bd6c-fe23dd14ff9c/f46b4e08-5710-4b65-b92c-613e32a8534c'
+                ]) {
+                    // Use the environment variables here
+                    
+                    def appUploadResponse = sh(script: """
+                    aws devicefarm create-upload --project-arn ${env.DEVICE_FARM_PROJECT_ARN} \
+                    --name "myapp.ipa" --type "IOS_APP" --query "{url: upload.url, arn: upload.arn}" --output json
+                    """, returnStdout: true).trim()
+
+                    def uploadUrl = sh(script: "echo '${appUploadResponse}' | jq -r .url", returnStdout: true).trim()
+                    def uploadArn = sh(script: "echo '${appUploadResponse}' | jq -r .arn", returnStdout: true).trim()
+
+                    sh """
+                     curl -T "${appFile}" "${uploadUrl}"
+                     sleep 20
+                     aws devicefarm get-upload --arn ${uploadArn} --query "upload.status" --output text
+                      """
+
+                    // Upload tests zip to Device Farm
+                    def appUploadResponse1 = sh(script: """
+                    aws devicefarm create-upload --project-arn ${env.DEVICE_FARM_PROJECT_ARN} \
+                    --name "zip-with-dependencies.zip" --type "APPIUM_JAVA_TESTNG_TEST_PACKAGE" --query "{url: upload.url, arn: upload.arn}" --output json
+                    """, returnStdout: true).trim()
+
+                    def uploadUrl1 = sh(script: "echo '${appUploadResponse1}' | jq -r .url", returnStdout: true).trim()
+                    def uploadArn1 = sh(script: "echo '${appUploadResponse1}' | jq -r .arn", returnStdout: true).trim()
+
+                    sh """
+                     curl -T "${zipFile}" "${uploadUrl1}"
+                     sleep 20
+                     aws devicefarm get-upload --arn ${uploadArn1} --query "upload.status" --output text
+                      """
+
+                    // Schedule run
+                    runArn = sh(script: """
+                        aws devicefarm schedule-run --project-arn ${env.DEVICE_FARM_PROJECT_ARN} \
+                        --app-arn ${uploadArn} --device-pool-arn ${env.DEVICE_FARM_DEVICE_POOL_ARN} \
+                        --name "Test Run" --test '{"type": "APPIUM_JAVA_TESTNG", "testPackageArn": "${uploadArn1}", "testSpecArn": "arn:aws:devicefarm:us-west-2:891922163093:upload:bbcb9f8a-c27e-4b0e-bd6c-fe23dd14ff9c/bcf98fcf-9eea-444c-9ac2-f0d105d77e9a"}' \
+                        --query "run.arn" --output text
+                        """, returnStdout: true).trim()
+
+                    echo "Run ARN: ${runArn}"
+
+                    // Wait for the run to complete and check status
+                    try {
+                        def runStatus = waitForDeviceFarmRunCompletion(runArn)
+                        echo "Current Run Status me: ${runStatus}"
+                        if (runStatus != 'PASSED') {
+                            buildFailed = true
+                            echo "Device Farm run failed."
+                        }
+                    } catch (Exception e) {
+                        buildFailed = true
+                        echo "Exception during Device Farm run: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('Upload to Device Farm') {
+            script {
+                echo "Run ARN: ${runArn}"
+            }
+        }
+
+        // Download test results and generate report
+        stage('Download Test Results') {
+            def resultUrl = sh(script: """
+                aws devicefarm list-artifacts --arn ${runArn} --type FILE --query "artifacts[?name=='Customer Artifacts'].url" --output text
+                """, returnStdout: true).trim()
+                
+            echo "Test results URL: ${resultUrl}"
+            
+            if (resultUrl) {
+                def resultZip = 'Customer Artifacts.zip'
+                sh """
+                    curl -o '${resultZip}' '${resultUrl}'
+                    unzip -o '${resultZip}' -d '${env.WORKSPACE}/test-results'
+                """
+            } else {
+                error "Failed to retrieve test results URL."
+            }
+        }
+
+        // Publish test results
+        stage('Publish Test Results') {
+            def filePath = '/home/ubuntu/jenkins89/workspace/build_main/'
+            def fileName = 'test-results/Host_Machine_Files/$DEVICEFARM_LOG_DIR'
+            def fileFullPath = "${filePath}${fileName}"
+
+            // Check if the file 'zero' exists at the specified path
+            archiveArtifacts artifacts: "${fileName}/**", allowEmptyArchive: true
+            def fileExists = fileExists(fileFullPath)
+
+            // Check if file exists at specified path
+            if (fileExists) {
+                echo "File found at ${fileFullPath}"
+                archiveArtifacts artifacts: "${fileName}/**", allowEmptyArchive: true
+            } else {
+                echo "File not found at ${fileFullPath}"
+            }
+        }
+            
+    } catch (Exception e) {
+        echo "Error occurred: ${e.message}"
+        currentBuild.result = 'FAILURE'
+        error("Build failed due to an error in one of the stages.")
+    } finally {
+        if (runArn) {
+            echo "Final Run ARN: ${runArn}"
+        } else {
+            echo "Run ARN was not generated due to an error."
+        }
+        if (buildFailed) {
+            currentBuild.result = 'FAILURE'
+        }
+    }
+}
+
+// Function to wait for Device Farm run completion
+def waitForDeviceFarmRunCompletion(runArn) {
+    timeout(time: 60, unit: 'MINUTES') { // Adjust timeout as per your needs
+        def status = ''
+        def terminalStatuses = ['COMPLETED', 'ERRORED', 'STOPPED', 'FAILED','PASSED']
+        
+        // Function to check if status is terminal
+        def isTerminalStatus = { stat ->
+            terminalStatuses.contains(stat)
+        }
+        
+        waitUntil {
+            status = sh(script: """
+                aws devicefarm get-run --arn ${runArn} --query "run.result" --output text
+            """, returnStdout: true).trim()
+            
+            echo "Current Run Status: ${status}"
+            return isTerminalStatus(status)
+        }
+        
+        // After waitUntil completes, return the final status
+        return status
+    }
+}
+

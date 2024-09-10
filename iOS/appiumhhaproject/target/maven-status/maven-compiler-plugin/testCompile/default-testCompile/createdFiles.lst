@@ -1,0 +1,11 @@
+StepDefinitions/EVVstepdefinitions.class
+Apphooks/Applicationhooks.class
+Utilities/takeScreenshot.class
+StepDefinitions/StepDefinitions.class
+StepDefinitions/Patientstepdefinitions.class
+StepDefinitions/Loginstepdefinitions.class
+Utilities/ConfigReader.class
+StepDefinitions/Chatstepdefinitions.class
+StepDefinitions/Menustepdefinitions.class
+BaseClass/Baseclass.class
+Runner/TestRunner.class
