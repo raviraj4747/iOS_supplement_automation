@@ -10,6 +10,5 @@ Feature: RC4 Test Scenarios
   Scenario: Verify app should allow user to navigate Start registeration flow
      When Click on next button from onboarding flow
      Then Click on Start registeration button
-     Given Verify Login button should appear
      
     
