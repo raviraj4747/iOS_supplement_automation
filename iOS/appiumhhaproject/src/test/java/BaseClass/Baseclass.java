@@ -44,6 +44,11 @@ public class Baseclass {
 	 		 capabilities.setCapability("xcodeSigningId", "iPhone Developer");
 			// running on AWS
 			 capabilities.setCapability("autoAcceptAlerts", "true");
+			 
+		        // Set device language and locale to Japanese
+		     capabilities.setCapability("locale", "ja_JP"); // Set locale
+		     capabilities.setCapability("language", "ja");  // Set language
+		        
 			 capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
 			 capabilities.setCapability(MobileCapabilityType.APP, "com.dearnatura.supplementapp");		
     	   	URL url = new URL("http://127.0.0.1:4723/wd/hub");
