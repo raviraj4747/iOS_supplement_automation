@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -139,33 +140,75 @@ public class StepDefinitions extends Baseclass {
 	@Then("Verify app open with onboarding flow")
 	public void Verify_app_open_with_onboarding_flow() throws InterruptedException {
 		    Thread.sleep(5000);
-			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"NEXT\"]")).isDisplayed();
+			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).isDisplayed();
 	}
 	
-	@When("Click on next button from onboarding flow")
-	public void Click_on_next_button_from_onboarding_flow() throws InterruptedException {
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"NEXT\"]")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"NEXT\"]")).click();
-
+	@When("Click on next button from onboarding flow and verify user redirected to Signup screen")
+	public void Click_on_next_button_from_onboarding_flow_and_verify_user_redirected_to_Signup_screen() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
+		Thread.sleep(1000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).isDisplayed();
 	}
 	
-	@Then("Click on Start registeration button")
+	@When("Enter Email id and Password")
 	public void Click_on_Start_registeration_button() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Start registration\"]")).click();
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Log In\"]")).isDisplayed();
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Log In\"]")).click();
-		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"Email\"]")).sendKeys("ravirajsinh7474@gmail.com");
+		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).sendKeys("ravirajsinh+28@gmail.com");
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"Password\"]")).click();
-	    driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name='Password']")).sendKeys("Raviraj#9822");;
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Log In\"]")).click();		
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"Buy Now\"])[1]")).click();	
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"advices\"]")).click();		
-		
+		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"パスワード\"]")).click();
+	    driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name=\"パスワード\"]")).sendKeys("Raj#9822");;
 	}
+	
+	@Then("Click on Login button")
+	public void Click_on_Login_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();	
+		Thread.sleep(3000);
+	}
+	@Then("Verify Recommandation tab should show with result")
+	public void Verify_Recommandation_tab_should_show_with_result() throws InterruptedException {
+		Thread.sleep(5000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"最近疲れ、筋肉が気になるあなたへ\"]")).isDisplayed();	
+		Thread.sleep(2000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"今すぐキープ\"]")).isDisplayed();	
+	    Thread.sleep(5000);
+	}
+	
+	@When("Naivgate to supplement list tab")
+	public void Naivgate_to_supplement_list_tab() throws InterruptedException {
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'サプリ一覧') and contains(@name, 'タブ: 1/3')]")).click();
+	}
+	
+	@Then("Verify supplement should show")
+	public void Verify_supplement_should_show() throws InterruptedException {
+		Thread.sleep(3000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"今すぐキープ\"]")).isDisplayed();	
+	}
+	
+	@When("Naivgate to bottle list page")
+	public void Naivgate_to_bottle_list_page() throws InterruptedException {
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'ボトルキープ') and contains(@name, 'タブ: 3/3')]")).click();
+	}
+	
+	@Then("Verify bottle  should show")
+	public void Verify_bottle_should_show() throws InterruptedException {
+		Thread.sleep(3000);
+		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"今すぐキープ\"])[1]")).isDisplayed();	
+	}
+	
 }
