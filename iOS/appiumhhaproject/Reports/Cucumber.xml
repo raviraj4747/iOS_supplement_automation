@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="85.352">
-    <testcase classname="RC4 Test Scenarios" name="Verify app should open successfully without crashing" time="9.93">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="93.891">
+    <testcase classname="RC4 Test Scenarios" name="Verify app should open successfully without crashing" time="9.881">
         <system-out><![CDATA[Then Verify app open with onboarding flow...................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify app should open and redirecting user to Signup and Login page" time="13.347">
+    <testcase classname="RC4 Test Scenarios" name="Verify app should open and redirecting user to Signup and Login page" time="13.129">
         <system-out><![CDATA[When Click on next button from onboarding flow and verify user redirected to Signup screen.passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify the Login functionality" time="43.884">
+    <testcase classname="RC4 Test Scenarios" name="Verify the Login functionality" time="43.642">
         <system-out><![CDATA[When Enter Email id and Password............................................passed
 Then Click on Login button..................................................passed
 Then Verify Recommandation tab should show with result......................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify supplement should show in the supplement list page" time="8.98">
+    <testcase classname="RC4 Test Scenarios" name="Verify supplement should show in the supplement list page" time="8.88">
         <system-out><![CDATA[When Naivgate to supplement list tab........................................passed
 Then Verify supplement should show..........................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify bottle listed on bottle tab" time="8.713">
+    <testcase classname="RC4 Test Scenarios" name="Verify bottle listed on bottle tab" time="8.78">
         <system-out><![CDATA[When Naivgate to bottle list page...........................................passed
 Then Verify bottle  should show.............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify recommmendation section should show" time="9.087">
+        <system-out><![CDATA[When Naivgate to recommendation section and click on plus icon..............passed
+Then Verify supplements should show.........................................passed
 ]]></system-out>
     </testcase>
 </testsuite>

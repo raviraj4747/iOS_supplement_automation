@@ -36,11 +36,11 @@ public class Baseclass {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 
 			 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-		//     capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "17.6.1");
-		//     capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
+	//	     capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "17.6.1");
+	//	     capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
 		     capabilities.setCapability("automationName", "XCUITest");
-		//     capabilities.setCapability(MobileCapabilityType.UDID,"00008030-001255311498C02E");
-    	//     capabilities.setCapability("xcodeOrgId", "S4T6PVN6LR");
+	//	     capabilities.setCapability(MobileCapabilityType.UDID,"00008030-001255311498C02E");
+   // 	     capabilities.setCapability("xcodeOrgId", "S4T6PVN6LR");
 	 		 capabilities.setCapability("xcodeSigningId", "iPhone Developer");
 			// running on AWS
 			 capabilities.setCapability("autoAcceptAlerts", "true");

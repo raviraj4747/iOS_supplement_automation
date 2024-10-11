@@ -23,10 +23,15 @@ Feature: RC4 Test Scenarios
      When Naivgate to supplement list tab   
      Then Verify supplement should show
      
-    @Regresion
+  @Regresion
   Scenario: Verify bottle listed on bottle tab
      When Naivgate to bottle list page 
      Then Verify bottle  should show   
+  
+  @Regresion
+  Scenario: Verify recommmendation section should show
+     When Naivgate to recommendation section and click on plus icon
+     Then Verify supplements should show      
           
      
      

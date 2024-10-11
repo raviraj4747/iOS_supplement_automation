@@ -199,4 +199,45 @@ formatter.after({
 formatter.after({
   "status": "passed"
 });
+formatter.scenario({
+  "name": "Verify recommmendation section should show",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@Regresion"
+    }
+  ]
+});
+formatter.write("Platform name :iOS");
+formatter.write("Device name : iPhone");
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Naivgate to recommendation section and click on plus icon",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "StepDefinitions.StepDefinitions.Naivgate_to_recommendation_section_and_click_on_plus_icon()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Verify supplements should show",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "StepDefinitions.StepDefinitions.Verify_supplements_should_show()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
 });

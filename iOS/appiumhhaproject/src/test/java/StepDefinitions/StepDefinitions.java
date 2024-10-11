@@ -196,7 +196,7 @@ public class StepDefinitions extends Baseclass {
 	@Then("Verify supplement should show")
 	public void Verify_supplement_should_show() throws InterruptedException {
 		Thread.sleep(3000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"今すぐキープ\"]")).isDisplayed();	
+		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"今すぐキープ\"])[1]")).isDisplayed();	
 	}
 	
 	@When("Naivgate to bottle list page")
@@ -209,6 +209,18 @@ public class StepDefinitions extends Baseclass {
 	public void Verify_bottle_should_show() throws InterruptedException {
 		Thread.sleep(3000);
 		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"今すぐキープ\"])[1]")).isDisplayed();	
+	}
+	
+	@When("Naivgate to recommendation section and click on plus icon")
+	public void Naivgate_to_recommendation_section_and_click_on_plus_icon() throws InterruptedException {
+		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"recommend\"]")).isDisplayed();	
+		Thread.sleep(1000);
+	}
+	
+	@Then("Verify supplements should show")
+	public void Verify_supplements_should_show() throws InterruptedException {
+		driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"recommend\"]")).click();
+		Thread.sleep(3000);
 	}
 	
 }
