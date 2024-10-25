@@ -65,7 +65,7 @@ node(node) {
                 println "${WK}"
                 sh "mvn clean package -DskipTests=true"
 
-                def appFile = "${pwd()}/myapp.ipa"
+                def appFile = "${pwd()}/supplement_dx_app.ipa"
                 def zipFile = "${pwd()}/target/zip-with-dependencies.zip"
 
                 // Define environment variables and credentials within withEnv block
@@ -78,7 +78,7 @@ node(node) {
                     
                     def appUploadResponse = sh(script: """
                     aws devicefarm create-upload --project-arn ${env.DEVICE_FARM_PROJECT_ARN} \
-                    --name "myapp.ipa" --type "IOS_APP" --query "{url: upload.url, arn: upload.arn}" --output json
+                    --name "supplement_dx_app.ipa" --type "IOS_APP" --query "{url: upload.url, arn: upload.arn}" --output json
                     """, returnStdout: true).trim()
 
                     def uploadUrl = sh(script: "echo '${appUploadResponse}' | jq -r .url", returnStdout: true).trim()
