@@ -107,48 +107,19 @@ public class StepDefinitions extends Baseclass {
 			System.out.println("Apply button is not present");
 		}
 	}
-
-	@When("user verifies the Hha notification popup")
-	public void user_verifies_the_Hha_notification_popup() throws InterruptedException {
-		try {
-			Thread.sleep(4000);
-			if (driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Allow\"]")).isDisplayed()) {
-				System.out.println("True");
-				driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Allow\"]")).click();
-			}
-		} catch (Exception e) {
-			System.out.println("Hha notification popup is not present");
-		}
-	}
-
-	@When("user verifies the location services popup")
-	public void user_verifies_the_location_services_popup() throws InterruptedException {
-		try {
-			Thread.sleep(4000);
-			if (driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Allow While Using App\"]"))
-					.isDisplayed()) {
-				System.out.println("True");
-				driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Allow While Using App\"]")).click();
-			}
-		} catch (Exception e) {
-			System.out.println("Location Services popup is not present");
-		}
-	}
-	
-	//Supplement app flow
 	
 	@Then("Verify app open with onboarding flow")
 	public void Verify_app_open_with_onboarding_flow() throws InterruptedException {
 		    Thread.sleep(5000);
-			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).isDisplayed();
+			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).isDisplayed();
 	}
 	
 	@When("Click on next button from onboarding flow and verify user redirected to Signup screen")
 	public void Click_on_next_button_from_onboarding_flow_and_verify_user_redirected_to_Signup_screen() throws InterruptedException {
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
 		Thread.sleep(1000);
@@ -158,9 +129,9 @@ public class StepDefinitions extends Baseclass {
 	@When("Enter Email id and Password")
 	public void Click_on_Start_registeration_button() throws InterruptedException {
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次\"]")).click();
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
 		Thread.sleep(1000);
