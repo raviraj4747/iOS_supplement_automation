@@ -197,32 +197,20 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(5000);
 		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"最近疲れ、妊娠が気になるあなたへ\"]")).isDisplayed();	
 		Thread.sleep(2000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"今すぐ購入\"]")).isDisplayed();	
+		assert driver.findElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]")).isDisplayed();	
 	    Thread.sleep(5000);
 	}
 	
 	@When("Naivgate to supplement list tab")
 	public void Naivgate_to_supplement_list_tab() throws InterruptedException {
 		Thread.sleep(1000);
-	    driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'サプリ一覧') and contains(@name, 'タブ: 1/3')]")).click();
+	    driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'サプリ一覧') and contains(@name, 'タブ: 2/3')]")).click();
 	}
 	
 	@Then("Verify supplement should show")
 	public void Verify_supplement_should_show() throws InterruptedException {
 		Thread.sleep(3000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"今すぐ購入\"]")).isDisplayed();	
-	}
-	
-	@When("Naivgate to bottle list page")
-	public void Naivgate_to_bottle_list_page() throws InterruptedException {
-		Thread.sleep(1000);
-	    driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'ボトルキープ') and contains(@name, 'タブ: 3/3')]")).click();
-	}
-	
-	@Then("Verify bottle  should show")
-	public void Verify_bottle_should_show() throws InterruptedException {
-		Thread.sleep(3000);
-		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"今すぐ購入\"])[1]")).isDisplayed();	
+		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"商品を選択\"])[1]")).isDisplayed();	
 	}
 	
 	@When("Naivgate to recommendation section and click on plus icon")
@@ -237,10 +225,11 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(3000);
 	}
 	
-	@When("Click on Menu icon icon and click on Log out button")
-	public void Click_on_Menu_icon_icon_and_click_on_Log_out_button() throws InterruptedException {
+	@When("Click on setting icon icon and click on Log out button")
+	public void Click_on_setting_icon_icon_and_click_on_Log_out_button() throws InterruptedException {
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"VitPit\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeButton")).click();
+		//XCUIElementTypeStaticText[contains(@name, 'My Page') and contains(@name, 'タブ: 3/3')]
+		driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'My Page') and contains(@name, 'タブ: 3/3')]")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Log Out\"]")).click();
 	}

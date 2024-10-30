@@ -28,17 +28,7 @@ Feature: RC4 Test Scenarios
      When Enter Email id and Password    
      Then Click on Login button
      Then Verify Recommandation tab should show with result   
-     
-     
-  @Regresion
-  Scenario: Verify supplement should show in the supplement list page
-     When Naivgate to supplement list tab   
-     Then Verify supplement should show
-     
-  @Regresion
-  Scenario: Verify bottle listed on bottle tab
-     When Naivgate to bottle list page 
-     Then Verify bottle  should show   
+       
   
   @Regresion
   Scenario: Verify recommmendation section should show
@@ -47,7 +37,7 @@ Feature: RC4 Test Scenarios
      
   @Regresion
   Scenario: Verify the Signout functionality
-     When Click on Menu icon icon and click on Log out button   
+     When Click on setting icon icon and click on Log out button   
      Then Verify Log out successfully        
           
      
