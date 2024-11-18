@@ -120,8 +120,8 @@ public class StepDefinitions extends Baseclass {
 			assert driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).isDisplayed();
 	}
 
-	@When("Click on next button from onboarding flow and verify user redirected to Signup screen")
-	public void Click_on_next_button_from_onboarding_flow_and_verify_user_redirected_to_Signup_screen() throws InterruptedException {
+	@When("Verify user should be redirected to the Signup page")
+	public void Verify_user_should_be_redirected_to_the_Signup_page() throws InterruptedException {
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
 		Thread.sleep(1000);
@@ -144,8 +144,8 @@ public class StepDefinitions extends Baseclass {
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).click();
 	}
 	
-	@When("Enter Email id and Password")
-	public void Enter_Email_id_and_Password() throws InterruptedException {
+	@When("Click on the login button from onboarding")
+	public void Click_on_the_login_button_from_onboarding() throws InterruptedException {
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
 		Thread.sleep(1000);
@@ -155,11 +155,88 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).sendKeys("purvi7474@gmail.com");
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"パスワード\"]")).click();
-	    driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name=\"パスワード\"]")).sendKeys("Raj#9822");;
 	}
+	
+	@Then("Verify login page should open")
+	public void Verify_login_page_should_open() throws InterruptedException {
+		Thread.sleep(1000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).isDisplayed();	
+	}
+	
+	@When("Click on the back button from signup page and verify")
+	public void Click_on_the_back_button_from_signup_page_and_verify() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).click();
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"戻る\"]")).click();
+		Thread.sleep(2000);
+	    assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).isDisplayed();	    
+	}
+	
+	@Then("Click on the back button from login page and verify")
+	public void Click_on_the_back_button_from_login_page_and_verify() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"戻る\"]")).click();
+		Thread.sleep(2000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).isDisplayed();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@When("Enter Email id and Password incorrect")
 	public void Enter_Email_id_and_Password_incorrect() throws InterruptedException {
@@ -172,10 +249,7 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).sendKeys("purvi7474@gmail.com");
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"パスワード\"]")).click();
-	    driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name=\"パスワード\"]")).sendKeys("Raj#98221");;
+		
 	}
 	
 	@Then("Click on Login button")
@@ -204,7 +278,7 @@ public class StepDefinitions extends Baseclass {
 	@When("Naivgate to supplement list tab")
 	public void Naivgate_to_supplement_list_tab() throws InterruptedException {
 		Thread.sleep(1000);
-	    driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'サプリ一覧') and contains(@name, 'タブ: 2/3')]")).click();
+		driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'サプリ一覧') and contains(@name, 'タブ: 2/2')]")).click();
 	}
 	
 	@Then("Verify supplement should show")
@@ -228,7 +302,6 @@ public class StepDefinitions extends Baseclass {
 	@When("Click on setting icon icon and click on Log out button")
 	public void Click_on_setting_icon_icon_and_click_on_Log_out_button() throws InterruptedException {
 		Thread.sleep(3000);
-		//XCUIElementTypeStaticText[contains(@name, 'My Page') and contains(@name, 'タブ: 3/3')]
 		driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'My Page') and contains(@name, 'タブ: 3/3')]")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Log Out\"]")).click();
