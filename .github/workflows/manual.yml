@@ -1,0 +1,25 @@
+name: Run Workflow on Selected Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Select the branch to run the workflow on"
+        required: true
+        default: "main"
+        type: choice
+        options:
+          - main
+          - dev
+
+jobs:
+  run-on-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Print selected branch
+        run: echo ""
