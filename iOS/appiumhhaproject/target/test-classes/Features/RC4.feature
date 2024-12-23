@@ -21,5 +21,9 @@ Feature: RC4 Test Scenarios
      When Click on the login button from onboarding 
      Then Verify login page should open
      
+    @Regresion
+  Scenario: Verify back button functionality from signup and login page 
+     When Click on the back button from signup page and verify 
+     Then Click on the back button from login page and verify
      
     
