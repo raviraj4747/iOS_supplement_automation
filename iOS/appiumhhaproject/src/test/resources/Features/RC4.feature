@@ -1,6 +1,7 @@
 Feature: RC4 Test Scenarios   
     
-  Feature: RC4 Test Scenarios    
+  Feature: RC4 Test Scenarios  
+  
      
   @Regresion
   Scenario: Verify user is able to open the supplement app 
@@ -19,5 +20,10 @@ Feature: RC4 Test Scenarios
   Scenario: Verify login page should open after clicking on login button 
      When Click on the login button from onboarding 
      Then Verify login page should open
-    
+     
+    @Regresion
+  Scenario: Verify back button functionality from signup and login page 
+     When Click on the back button from signup page and verify 
+     Then Click on the back button from login page and verify
+     
     
