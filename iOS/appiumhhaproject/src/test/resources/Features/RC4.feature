@@ -1,7 +1,6 @@
 Feature: RC4 Test Scenarios   
     
-  Feature: RC4 Test Scenarios  
-  
+  Feature: RC4 Test Scenarios    
      
   @Regresion
   Scenario: Verify user is able to open the supplement app 
