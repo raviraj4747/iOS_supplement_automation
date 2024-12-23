@@ -19,6 +19,5 @@ Feature: RC4 Test Scenarios
   Scenario: Verify login page should open after clicking on login button 
      When Click on the login button from onboarding 
      Then Verify login page should open
-     
-     
+    
     
