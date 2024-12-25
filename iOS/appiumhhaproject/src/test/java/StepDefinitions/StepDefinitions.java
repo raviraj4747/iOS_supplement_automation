@@ -57,7 +57,7 @@ import org.testng.Assert;
 
 public class StepDefinitions extends Baseclass {
 	
-	WebDriverWait wait = new WebDriverWait(driver, 10); 
+	WebDriverWait wait = new WebDriverWait(driver, 20); 
 	Actions actions = new Actions(driver);
 
 	@Given("user is on the login page")
@@ -96,28 +96,16 @@ public class StepDefinitions extends Baseclass {
 
 	}
 
-	@When("user verifies the apply button")
-	public void user_verifies_the_apply_button() throws InterruptedException {
-		try {
-			if (driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"FooterButton\"]")).isDisplayed()) {
-				System.out.println("True");
-				driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"FooterButton\"]")).click();
-			}
-		} catch (Exception e) {
-			System.out.println("Apply button is not present");
-		}
-	}
-	
 	@Then("Verify app open with onboarding flow")
 	public void Verify_app_open_with_onboarding_flow() throws InterruptedException {
-		    Thread.sleep(5000);
-			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).isDisplayed();
+		    WebElement nextButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")));
+		    nextButton.isDisplayed();
 	}
 	
 	@Then("Verify signup page should open")
 	public void Verify_signup_page_should_open() throws InterruptedException {
-		    Thread.sleep(5000);
-			assert driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).isDisplayed();
+    	    WebElement nextButton1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")));
+	        nextButton1.isDisplayed();
 	}
 
 	@When("Verify user should be redirected to the Signup page")
@@ -189,36 +177,45 @@ public class StepDefinitions extends Baseclass {
 		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).isDisplayed();
 	}
 	
+	@Given("Click here if you have an account link")
+	public void Click_here_if_you_have_an_account_link() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"アカウントをお持ち方は こちら >\"]")).click();
+		Thread.sleep(3000);
+        assert driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).isDisplayed();	
+	}
 	
+	@Given("Click on No account yet Sign up here link")
+	public void Click_on_No_account_yet_Sign_up_here_link() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"アカウントをお持ちでない方は こちら >\"]")).click();
+		Thread.sleep(3000);
+        assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).isDisplayed();	
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Given("Click on skip functionality link")
+	public void Click_on_skip_functionality_link() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"チュートリアルをスキップ >\"]")).click();
+		Thread.sleep(1000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).isDisplayed();
+	}
 	
 	
 	
