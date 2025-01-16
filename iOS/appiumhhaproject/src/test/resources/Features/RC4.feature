@@ -1,9 +1,6 @@
 Feature: RC4 Test Scenarios   
-    
-  Feature: RC4 Test Scenarios  
   
-     
- @Regresion
+  @Regresion
   Scenario: Verify user is able to open the supplement app 
     Then Verify app open with onboarding flow
     
@@ -32,8 +29,29 @@ Feature: RC4 Test Scenarios
 
   @Regresion
   Scenario: Verify No account yet Sign up here functionality 
-      Given Click on No account yet Sign up here link  
+     Given Click on No account yet Sign up here link  
 
   @Regresion
   Scenario: Verify skip functionality
-      Given Click on skip functionality link  
+     Given Click on skip functionality link  
+
+  @Regresion    
+  Scenario: Verify user is able to login to the system 
+     When Enter Email id and Password
+     Then Click on Login button
+
+  @Regresion    
+  Scenario: Verify recommendation supplement should show inside the recommendation tab
+     Then verify supplement should show inside the tab   
+     
+  @Regresion    
+  Scenario: Verify recommendation category inside the recommendation tab
+     Then Click on plus icon from recommend section
+     
+   @Regresion    
+  Scenario: Verify the Add to Cart button should be displayed on the product
+     Then Verify add to cart button should show on product  
+     
+     
+     
+  

@@ -217,25 +217,7 @@ public class StepDefinitions extends Baseclass {
 		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).isDisplayed();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@When("Enter Email id and Password incorrect")
+	@When("Enter Email id and Password")
 	public void Enter_Email_id_and_Password_incorrect() throws InterruptedException {
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
@@ -246,30 +228,50 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
 		Thread.sleep(3000);
-		
+		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")).sendKeys("veer2025@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//XCUIElementTypeTextField[@name=\"パスワード\"]")).click();
+		driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name='パスワード']")).sendKeys("Raj#9822");
 	}
 	
 	@Then("Click on Login button")
 	public void Click_on_Login_button() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();	
-		Thread.sleep(3000);
+		Thread.sleep(6000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"最近デスクワーク後もアクティブでいたい、友人との時間を楽しみたいが気になるあなたへ\"]")).isDisplayed();	
 	}
 	
-	@Then("Verify validation message should show")
-	public void Verify_validation_message_should_show() throws InterruptedException {
-		Thread.sleep(3000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Invalid email or password\"]")).isDisplayed();
-		Thread.sleep(3000);
-	}
-	
-	@Then("Verify Recommandation tab should show with result")
-	public void Verify_Recommandation_tab_should_show_with_result() throws InterruptedException {
+	@Then("verify supplement should show inside the tab")
+	public void verify_supplement_should_show_inside_the_tab() throws InterruptedException {
 		Thread.sleep(5000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"最近疲れ、妊娠が気になるあなたへ\"]")).isDisplayed();	
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"カートに追加\"]")).isDisplayed();
 		Thread.sleep(2000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]")).isDisplayed();	
-	    Thread.sleep(5000);
+	}
+	
+	@Then("Click on plus icon from recommend section")
+	public void Click_on_plus_icon_from_recommend_section() throws InterruptedException {
+		Thread.sleep(5000);
+		MobileElement swipeableElement = (MobileElement) driver.findElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeScrollView"));
+		// Prepare the parameters for the swipe action
+		HashMap<String, Object> swipeObject = new HashMap<>();
+		swipeObject.put("direction", "up"); // Specify the swipe direction
+		swipeObject.put("element", swipeableElement.getId()); // Correctly set the element's ID
+
+		// Optional: Add additional parameters like duration (in milliseconds) if needed
+	   	swipeObject.put("duration", 300); // Duration of the swipe in milliseconds (optional)
+		// Perform the swipe within the element
+		driver.executeScript("mobile: swipe", swipeObject);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//XCUIElementTypeImage[@name=\"デスクワーク後もアクティブでいたい\"])[1]")).click();
+		Thread.sleep(2000);
+		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"カートに追加\"])[2]")).isDisplayed();
+	}
+	
+	@When("Verify add to cart button should show on product ")
+	public void Verify_add_to_cart_button_should_show_on_product() throws InterruptedException {
+		Thread.sleep(1000);
+		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"カートに追加\"]")).isDisplayed();
 	}
 	
 	@When("Naivgate to supplement list tab")
