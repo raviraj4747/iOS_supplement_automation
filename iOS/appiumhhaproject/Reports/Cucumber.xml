@@ -1,32 +1,172 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="93.891">
-    <testcase classname="RC4 Test Scenarios" name="Verify app should open successfully without crashing" time="9.881">
+<testsuite errors="0" failures="3" name="io.cucumber.core.plugin.JUnitFormatter" skipped="1" tests="12" time="334.727">
+    <testcase classname="RC4 Test Scenarios" name="Verify user is able to open the supplement app" time="59.521">
         <system-out><![CDATA[Then Verify app open with onboarding flow...................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify app should open and redirecting user to Signup and Login page" time="13.129">
-        <system-out><![CDATA[When Click on next button from onboarding flow and verify user redirected to Signup screen.passed
+    <testcase classname="RC4 Test Scenarios" name="Verify onboarding flow after opening the application" time="14.908">
+        <system-out><![CDATA[When Verify user should be redirected to the Signup page....................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify the Login functionality" time="43.642">
-        <system-out><![CDATA[When Enter Email id and Password............................................passed
-Then Click on Login button..................................................passed
-Then Verify Recommandation tab should show with result......................passed
+    <testcase classname="RC4 Test Scenarios" name="Verify signup page should open after clicking on Signup button" time="20.278">
+        <system-out><![CDATA[When Click on the signup button.............................................passed
+Then Verify signup page should open.........................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify supplement should show in the supplement list page" time="8.88">
-        <system-out><![CDATA[When Naivgate to supplement list tab........................................passed
-Then Verify supplement should show..........................................passed
+    <testcase classname="RC4 Test Scenarios" name="Verify login page should open after clicking on login button" time="27.535">
+        <system-out><![CDATA[When Click on the login button from onboarding..............................passed
+Then Verify login page should open..........................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify bottle listed on bottle tab" time="8.78">
-        <system-out><![CDATA[When Naivgate to bottle list page...........................................passed
-Then Verify bottle  should show.............................................passed
+    <testcase classname="RC4 Test Scenarios" name="Verify back button functionality from signup and login page" time="37.696">
+        <system-out><![CDATA[When Click on the back button from signup page and verify...................passed
+Then Click on the back button from login page and verify....................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="RC4 Test Scenarios" name="Verify recommmendation section should show" time="9.087">
-        <system-out><![CDATA[When Naivgate to recommendation section and click on plus icon..............passed
-Then Verify supplements should show.........................................passed
+    <testcase classname="RC4 Test Scenarios" name="Verify Already a user ? Log in here functionality" time="22.007">
+        <system-out><![CDATA[Given Click here if you have an account link................................passed
 ]]></system-out>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify No account yet Sign up here functionality" time="35.705">
+        <system-out><![CDATA[Given Click on No account yet Sign up here link.............................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify skip functionality" time="26.28">
+        <system-out><![CDATA[Given Click on skip functionality link......................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify user is able to login to the system" time="65.244">
+        <failure message="An element could not be located on the page using the given search parameters.&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: '192.168.1.11', ip: '2402:a00:401:a870:e15d:4c3f:ed67:39c0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.2', java.version: '17.0.2'&#10;Driver info: io.appium.java_client.ios.IOSDriver&#10;Capabilities {app: com.dearnatura.supplementapp, autoAcceptAlerts: true, automationName: XCUITest, browserName: , databaseEnabled: false, deviceName: iPhone 11, javascriptEnabled: true, language: ja, locale: ja_JP, locationContextEnabled: false, networkConnectionEnabled: false, platform: MAC, platformName: iOS, platformVersion: 18.1, takesScreenshot: true, udid: 00008030-001255311498C02E, webStorageEnabled: false, xcodeOrgId: S4T6PVN6LR, xcodeSigningId: iPhone Developer}&#10;Session ID: da9b138b-8181-4bfb-bc5d-24dbe8a54a86&#10;*** Element info: {Using=xpath, value=//XCUIElementTypeStaticText[@name=&quot;最近デスクワーク後もアクティブでいたい、友人との時間を楽しみたいが気になるあなたへ&quot;]}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[When Enter Email id and Password............................................passed
+Then Click on Login button..................................................failed
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: '192.168.1.11', ip: '2402:a00:401:a870:e15d:4c3f:ed67:39c0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.2', java.version: '17.0.2'
+Driver info: io.appium.java_client.ios.IOSDriver
+Capabilities {app: com.dearnatura.supplementapp, autoAcceptAlerts: true, automationName: XCUITest, browserName: , databaseEnabled: false, deviceName: iPhone 11, javascriptEnabled: true, language: ja, locale: ja_JP, locationContextEnabled: false, networkConnectionEnabled: false, platform: MAC, platformName: iOS, platformVersion: 18.1, takesScreenshot: true, udid: 00008030-001255311498C02E, webStorageEnabled: false, xcodeOrgId: S4T6PVN6LR, xcodeSigningId: iPhone Developer}
+Session ID: da9b138b-8181-4bfb-bc5d-24dbe8a54a86
+*** Element info: {Using=xpath, value=//XCUIElementTypeStaticText[@name="最近デスクワーク後もアクティブでいたい、友人との時間を楽しみたいが気になるあなたへ"]}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:41)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.execute(IOSDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:61)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElement(IOSDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:151)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElementByXPath(IOSDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:57)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElement(IOSDriver.java:1)
+	at StepDefinitions.StepDefinitions.Click_on_Login_button(StepDefinitions.java:242)
+	at ✽.Click on Login button(classpath:Features/RC4.feature:50)
+]]></failure>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify recommendation supplement should show inside the recommendation tab" time="10.984">
+        <failure message="An element could not be located on the page using the given search parameters.&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: '192.168.1.11', ip: '2402:a00:401:a870:e15d:4c3f:ed67:39c0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.2', java.version: '17.0.2'&#10;Driver info: io.appium.java_client.ios.IOSDriver&#10;Capabilities {app: com.dearnatura.supplementapp, autoAcceptAlerts: true, automationName: XCUITest, browserName: , databaseEnabled: false, deviceName: iPhone 11, javascriptEnabled: true, language: ja, locale: ja_JP, locationContextEnabled: false, networkConnectionEnabled: false, platform: MAC, platformName: iOS, platformVersion: 18.1, takesScreenshot: true, udid: 00008030-001255311498C02E, webStorageEnabled: false, xcodeOrgId: S4T6PVN6LR, xcodeSigningId: iPhone Developer}&#10;Session ID: 8e758bd8-c3d9-4ebb-a2eb-dc483e5bbdb2&#10;*** Element info: {Using=xpath, value=//XCUIElementTypeButton[@name=&quot;カートに追加&quot;]}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Then verify supplement should show inside the tab...........................failed
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: '192.168.1.11', ip: '2402:a00:401:a870:e15d:4c3f:ed67:39c0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.2', java.version: '17.0.2'
+Driver info: io.appium.java_client.ios.IOSDriver
+Capabilities {app: com.dearnatura.supplementapp, autoAcceptAlerts: true, automationName: XCUITest, browserName: , databaseEnabled: false, deviceName: iPhone 11, javascriptEnabled: true, language: ja, locale: ja_JP, locationContextEnabled: false, networkConnectionEnabled: false, platform: MAC, platformName: iOS, platformVersion: 18.1, takesScreenshot: true, udid: 00008030-001255311498C02E, webStorageEnabled: false, xcodeOrgId: S4T6PVN6LR, xcodeSigningId: iPhone Developer}
+Session ID: 8e758bd8-c3d9-4ebb-a2eb-dc483e5bbdb2
+*** Element info: {Using=xpath, value=//XCUIElementTypeButton[@name="カートに追加"]}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:41)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.execute(IOSDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:61)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElement(IOSDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:151)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElementByXPath(IOSDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:57)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElement(IOSDriver.java:1)
+	at StepDefinitions.StepDefinitions.verify_supplement_should_show_inside_the_tab(StepDefinitions.java:248)
+	at ✽.verify supplement should show inside the tab(classpath:Features/RC4.feature:55)
+]]></failure>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify recommendation category inside the recommendation tab" time="9.705">
+        <failure message="An element could not be located on the page using the given search parameters.&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: '192.168.1.11', ip: '2402:a00:401:a870:e15d:4c3f:ed67:39c0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.2', java.version: '17.0.2'&#10;Driver info: io.appium.java_client.ios.IOSDriver&#10;Capabilities {app: com.dearnatura.supplementapp, autoAcceptAlerts: true, automationName: XCUITest, browserName: , databaseEnabled: false, deviceName: iPhone 11, javascriptEnabled: true, language: ja, locale: ja_JP, locationContextEnabled: false, networkConnectionEnabled: false, platform: MAC, platformName: iOS, platformVersion: 18.1, takesScreenshot: true, udid: 00008030-001255311498C02E, webStorageEnabled: false, xcodeOrgId: S4T6PVN6LR, xcodeSigningId: iPhone Developer}&#10;Session ID: d50cd02f-4870-403d-af64-c216d817cecb&#10;*** Element info: {Using=xpath, value=//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeScrollView}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Then Click on plus icon from recommend section..............................failed
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: '192.168.1.11', ip: '2402:a00:401:a870:e15d:4c3f:ed67:39c0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.2', java.version: '17.0.2'
+Driver info: io.appium.java_client.ios.IOSDriver
+Capabilities {app: com.dearnatura.supplementapp, autoAcceptAlerts: true, automationName: XCUITest, browserName: , databaseEnabled: false, deviceName: iPhone 11, javascriptEnabled: true, language: ja, locale: ja_JP, locationContextEnabled: false, networkConnectionEnabled: false, platform: MAC, platformName: iOS, platformVersion: 18.1, takesScreenshot: true, udid: 00008030-001255311498C02E, webStorageEnabled: false, xcodeOrgId: S4T6PVN6LR, xcodeSigningId: iPhone Developer}
+Session ID: d50cd02f-4870-403d-af64-c216d817cecb
+*** Element info: {Using=xpath, value=//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeScrollView}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:41)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.execute(IOSDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:61)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElement(IOSDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:151)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElementByXPath(IOSDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:57)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.ios.IOSDriver.findElement(IOSDriver.java:1)
+	at StepDefinitions.StepDefinitions.Click_on_plus_icon_from_recommend_section(StepDefinitions.java:255)
+	at ✽.Click on plus icon from recommend section(classpath:Features/RC4.feature:60)
+]]></failure>
+    </testcase>
+    <testcase classname="RC4 Test Scenarios" name="Verify the Add to Cart button should be displayed on the product" time="4.236">
+        <skipped><![CDATA[Then Verify add to cart button should show on product.......................undefined
+]]></skipped>
     </testcase>
 </testsuite>
