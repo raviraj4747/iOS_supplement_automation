@@ -1,7 +1,7 @@
 Feature: RC4 Test Scenarios   
   
-  @Regresion
   @case_79
+  @Regresion
   Scenario: Verify user is able to open the supplement app 
     Then Verify app open with onboarding flow   
     
@@ -59,8 +59,7 @@ Feature: RC4 Test Scenarios
   Scenario: Verify recommendation category inside the recommendation tab
      Then Click on plus icon from recommend section
      
-     
   @case_93    
   @Regresion    
   Scenario: Verify the Add to Cart button should be displayed on the product
-     Then Verify add to cart button should show on product  
+     Then Verify add to cart button should show on product

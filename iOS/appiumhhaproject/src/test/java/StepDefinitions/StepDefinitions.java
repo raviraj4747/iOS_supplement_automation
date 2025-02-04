@@ -238,7 +238,7 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();	
 		Thread.sleep(6000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"最近デスクワーク後もアクティブでいたい、友人との時間を楽しみたいが気になるあなたへ\"]")).isDisplayed();	
+		assert driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"最近デスクワーク後もアクティブでいたい、季節の変わり目も元気に過ごせるが気になるあなたへ\"]")).isDisplayed();	
 	}
 	
 	@Then("verify supplement should show inside the tab")
@@ -267,9 +267,9 @@ public class StepDefinitions extends Baseclass {
 		assert driver.findElement(By.xpath("(//XCUIElementTypeButton[@name=\"カートに追加\"])[2]")).isDisplayed();
 	}
 	
-	@When("Verify add to cart button should show on product ")
+	@Then("Verify add to cart button should show on product")
 	public void Verify_add_to_cart_button_should_show_on_product() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"カートに追加\"]")).isDisplayed();
 	}
 	
