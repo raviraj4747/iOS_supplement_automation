@@ -158,20 +158,27 @@ node(node) {
 
         // Publish test results
         stage('Publish Test Results') {
-            def filePath = '/home/ubuntu/jenkins89/workspace/build_main/'
-            def fileName = 'test-results/Host_Machine_Files/$DEVICEFARM_LOG_DIR'
-            def fileFullPath = "${filePath}${fileName}"
+            def reportDir = 'test-results/Host_Machine_Files/$DEVICEFARM_LOG_DIR/test-output'
+            def reportFile = "${reportDir}/index.html"  // Assuming index.html is your main HTML report
 
-            // Check if the file 'zero' exists at the specified path
-            archiveArtifacts artifacts: "${fileName}/**", allowEmptyArchive: true
-            def fileExists = fileExists(fileFullPath)
+            // Check if the file exists
+            if (fileExists(reportFile)) {
+                echo "HTML report found at ${reportFile}"
 
-            // Check if file exists at specified path
-            if (fileExists) {
-                echo "File found at ${fileFullPath}"
-                archiveArtifacts artifacts: "${fileName}/**", allowEmptyArchive: true
+                // Archive the artifacts (optional)
+                archiveArtifacts artifacts: "${reportDir}/**", allowEmptyArchive: true
+
+                // Publish the HTML report in Jenkins
+                publishHTML([
+                    reportName: 'Device Farm Test Report',
+                    reportDir: reportDir,  // Directory containing the HTML files
+                    reportFiles: 'index.html',  // The main HTML file to display
+                    keepAll: true,  // Keep the report after the build is completed
+                    allowMissing: false,  // Fail the build if the report is missing
+                    alwaysLinkToLastBuild: true  // Always link to the last build's report
+                ])
             } else {
-                echo "File not found at ${fileFullPath}"
+                echo "HTML report not found at ${reportFile}"
             }
         }
             
@@ -215,4 +222,3 @@ def waitForDeviceFarmRunCompletion(runArn) {
         return status
     }
 }
-
