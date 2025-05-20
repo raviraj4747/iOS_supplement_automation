@@ -97,7 +97,7 @@ public class StepDefinitions extends Baseclass {
 	}
 	@Then("Verify app open with onboarding flow")
 	public void Verify_app_open_with_onboarding_flow() throws InterruptedException {
-		    WebElement nextButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"次へ1\"]")));
+		    WebElement nextButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")));
 		    nextButton.isDisplayed();
 	}
 	
