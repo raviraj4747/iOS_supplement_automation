@@ -1,5 +1,4 @@
 package StepDefinitions;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -102,9 +102,15 @@ public class StepDefinitions extends Baseclass {
 	}
 	
 	@Then("Verify signup page should open")
-	public void Verify_signup_page_should_open() throws InterruptedException {
-    	    WebElement nextButton1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeTextField[@name=\"メール\"]")));
-	        nextButton1.isDisplayed();
+	public void Verify_signup_page_should_open() throws InterruptedException {	        
+	        WebElement nextButton2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Create Account\"]")));
+	        nextButton2.click();
+	        Thread.sleep(5000);
+	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Cancel\"]")));
+	        nextButton3.click();
+	        Thread.sleep(5000);
+			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).click();
+	        Thread.sleep(5000);
 	}
 
 	@When("Verify user should be redirected to the Signup page")
