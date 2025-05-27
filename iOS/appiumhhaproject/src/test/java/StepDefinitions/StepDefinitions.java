@@ -101,41 +101,83 @@ public class StepDefinitions extends Baseclass {
 		    nextButton.isDisplayed();
 	}
 	
-	@Then("Verify signup page should open")
-	public void Verify_signup_page_should_open() throws InterruptedException {	        
-	        WebElement nextButton2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Create Account\"]")));
-	        nextButton2.click();
-	        Thread.sleep(5000);
-	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Cancel\"]")));
-	        nextButton3.click();
-	        Thread.sleep(5000);
-			driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).click();
-	        Thread.sleep(5000);
+	@When("Verify on boaring flow should open")
+	public void Verify_on_boaring_flow_should_open() throws InterruptedException {
+		for (int i=0;i<=1;i++)
+		{		
+			WebElement signup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")));
+			signup.click();
+		}
+		WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")));
+		element1.click();
+		WebElement element2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")));
+		element2.isDisplayed();
 	}
 
-	@When("Verify user should be redirected to the Signup page")
-	public void Verify_user_should_be_redirected_to_the_Signup_page() throws InterruptedException {
-		Thread.sleep(5000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
-		Thread.sleep(1000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).isDisplayed();
+	@Then("Click on the signup button")
+	public void Click_on_the_signup_button() throws InterruptedException {
+		  WebElement signup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")));
+		  signup.click();
 	}
 	
-	@When("Click on the signup button")
-	public void Click_on_the_signup_button() throws InterruptedException {
-		Thread.sleep(5000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"次へ\"]")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"登録を始める\"]")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")).click();
+	@Then("Click on the login button")
+	public void Click_on_the_login_button() throws InterruptedException {
+		 WebElement login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")));
+		 login.click();
 	}
+	
+	@Then("Verify signup page should open")
+	public void Verify_signup_page_should_open() throws InterruptedException {	        
+	        WebElement nextButton2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"アカウントを作成する\"]")));
+	        nextButton2.click();
+	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"確認コードを送信\"]")));
+	        nextButton3.isDisplayed();
+	}
+	
+	@Then("Verify login page should open")
+	public void Verify_login_page_should_open() throws InterruptedException {	        
+	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインイン\"]")));
+	        nextButton3.isDisplayed();
+	}
+	
+	@Then("Navigate to the Sigup and login button page")
+	public void Navigate_to_the_Sigup_and_login_button_page() throws InterruptedException {	        
+	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"チュートリアルをスキップ >\"]")));
+	        nextButton3.click();
+	        
+	        WebElement nextButton4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")));
+	        nextButton4.isDisplayed();
+	}	
+	
+	@Then("Verify Cancel button functionality from pop up")
+	public void Verify_Cancel_button_functionality_from_pop_up() throws InterruptedException {	        
+	        WebElement cancel_button= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"キャンセル\"]")));
+	        cancel_button.click();
+	        
+	        WebElement nextButton4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")));
+	        nextButton4.isDisplayed();
+	}		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@When("Click on the login button from onboarding")
 	public void Click_on_the_login_button_from_onboarding() throws InterruptedException {
@@ -148,12 +190,6 @@ public class StepDefinitions extends Baseclass {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).click();
 		Thread.sleep(3000);
-	}
-	
-	@Then("Verify login page should open")
-	public void Verify_login_page_should_open() throws InterruptedException {
-		Thread.sleep(1000);
-		assert driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ログイン\"]")).isDisplayed();	
 	}
 	
 	@When("Click on the back button from signup page and verify")
