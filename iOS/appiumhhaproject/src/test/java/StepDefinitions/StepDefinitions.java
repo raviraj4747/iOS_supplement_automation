@@ -128,15 +128,18 @@ public class StepDefinitions extends Baseclass {
 	
 	@Then("Verify signup page should open")
 	public void Verify_signup_page_should_open() throws InterruptedException {	        
-	        WebElement nextButton2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"アカウントを作成する\"]")));
+		WebElement nextButton2 = wait.until(ExpectedConditions.visibilityOfElementLocated(
+			    By.xpath("//XCUIElementTypeButton[@name=\"アカウントを作成する\" or @name=\"Create Account\"]")));
 	        nextButton2.click();
-	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"確認コードを送信\"]")));
+	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	        	    By.xpath("//XCUIElementTypeButton[@name=\"確認コードを送信\" or @name=\"Send verification code\"]")));
 	        nextButton3.isDisplayed();
 	}
 	
 	@Then("Verify login page should open")
 	public void Verify_login_page_should_open() throws InterruptedException {	        
-	        WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインイン\"]")));
+		WebElement nextButton3 = wait.until(ExpectedConditions.visibilityOfElementLocated(
+			    By.xpath("//XCUIElementTypeButton[@name=\"サインイン\" or @name=\"Sign in\"]")));
 	        nextButton3.isDisplayed();
 	}
 	
