@@ -155,7 +155,7 @@ public class StepDefinitions extends Baseclass {
 	@Then("Verify Cancel button functionality from pop up")
 	public void Verify_Cancel_button_functionality_from_pop_up() throws InterruptedException {	        
 		WebElement cancel_button = wait.until(ExpectedConditions.visibilityOfElementLocated(
-			    By.xpath("//XCUIElementTypeButton[@name=\"キャンセル\"] | //XCUIElementTypeStaticText[@name=\"Cancel\"]")));
+				By.xpath("//XCUIElementTypeButton[@name=\"キャンセル\" or @name=\"Cancel\"]")));
 	        cancel_button.click();
 	        
 	        WebElement nextButton4 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"サインアップ\"]")));
