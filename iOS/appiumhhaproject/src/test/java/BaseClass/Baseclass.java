@@ -3,6 +3,7 @@ package BaseClass;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
@@ -45,7 +46,7 @@ public class Baseclass {
 		        // Set device language and locale to Japanese
 		     capabilities.setCapability("locale", "ja_JP"); // Set locale
 		     capabilities.setCapability("language", "ja");  // Set language
-		     capabilities.setCapability("preferredLanguages", new String[] {"ja"});
+		     capabilities.setCapability("appium:preferredLanguages", Arrays.asList("ja"));
 		        
 			 capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
 			 capabilities.setCapability(MobileCapabilityType.APP, "com.dearnatura.supplementapp");		
