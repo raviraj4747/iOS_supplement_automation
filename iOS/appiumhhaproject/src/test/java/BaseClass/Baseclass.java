@@ -45,6 +45,7 @@ public class Baseclass {
 		        // Set device language and locale to Japanese
 		     capabilities.setCapability("locale", "ja_JP"); // Set locale
 		     capabilities.setCapability("language", "ja");  // Set language
+		     capabilities.setCapability("preferredLanguages", new String[] {"ja"});
 		        
 			 capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, true);
 			 capabilities.setCapability(MobileCapabilityType.APP, "com.dearnatura.supplementapp");		
